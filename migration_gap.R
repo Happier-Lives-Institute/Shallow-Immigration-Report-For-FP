@@ -13,4 +13,5 @@ d.gap <- d.all %>% filter(`type of % calculation` == "% of gap" &
                             `FU from immigration to measure in years` != "-0.5") %>% 
   select(Citation, `sample size`, `FU from immigration to measure in years`, `% of gap closed`) %>% 
   rename(N = `sample size`, gap = `% of gap closed`)
-GAP <- weighted.mean(x = d.gap$gap, w = d.gap$N); GAP
+GAP <- weighted.mean(x = d.gap$gap, w = d.gap$N); GAP*100
+range(d.gap$gap)*100

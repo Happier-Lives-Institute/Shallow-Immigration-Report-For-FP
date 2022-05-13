@@ -4,7 +4,7 @@ source("_dependencies/dependencies.R")
 # Get the data from the gsheet
 d.all <- read_sheet(
   "https://docs.google.com/spreadsheets/d/13s3TOFG8tlroWkJ_MjAYDyqs7KOj6ZMUREMTAr97W08/",
-  sheet = "Immigrate <> SWB"
+  sheet = "Immigrate <> SWB (closing the gap)"
 )
 
 # Get data for calculation of how much the gap is closed

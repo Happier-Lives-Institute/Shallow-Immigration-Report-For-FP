@@ -13,6 +13,7 @@ d.gap <- d.all %>% filter(`type of % calculation` == "% of gap" &
                             `FU from immigration to measure in years` != "-0.5") %>% 
   select(Citation, `sample size`, `FU from immigration to measure in years`, `% of gap closed`) %>% 
   rename(N = `sample size`, gap = `% of gap closed`)
+uniqueN(d.gap$Citation) - 2 # number of sources understanding that PINZMS is only one
 GAP <- weighted.mean(x = d.gap$gap, w = d.gap$N); GAP*100
 range(d.gap$gap)*100
 
@@ -91,6 +92,7 @@ GWP10s <- GWP %>% filter(Year >= 2010) %>% mutate(unhappy = pre2010avg < 5)
 GWP10s.mod1 <- lm(ls ~ unhappy*time, GWP10s)
 GWP10s.mod2 <- lm(log(ls) ~ unhappy*time, GWP10s)
 exp(coef(GWP10s.mod2))
+exp(coef(GWP10s.mod2)[3]+coef(GWP10s.mod2)[4])
 
 # LS over time analysis
 summary(lm(ls ~ time, GWP))

@@ -17,7 +17,10 @@ d.gap <- d.all %>% filter(`type of % calculation` == "% of gap" &
                             `FU from immigration to measure in years` != "-0.5") %>% 
   select(Citation, `sample size`, `FU from immigration to measure in years`, `% of gap closed`) %>% 
   rename(N = `sample size`, gap = `% of gap closed`)
+
 uniqueN(d.gap$Citation) - 2 # number of sources understanding that PINZMS is only one
+sum(d.gap$N) # number of observations
+
 GAP <- weighted.mean(x = d.gap$gap, w = d.gap$N); GAP*100
 range(d.gap$gap)*100
 
@@ -110,3 +113,8 @@ mod.hhspillovers1 <- rma.mv(yi = d, V = d_se^2,
                                test = "t", method="REML",
                                data = hhspillovers)
 summary(mod.hhspillovers1)
+coef(mod.hhspillovers1)[[1]]*2
+sum((hhspillovers %>% filter(!is.na(d)))$`sample size`)
+nrow((hhspillovers %>% filter(!is.na(d))))
+     
+      

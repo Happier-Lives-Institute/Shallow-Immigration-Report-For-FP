@@ -45,9 +45,10 @@ GWP <- full_join(GWP, GWP00s)
 GWP10s <- GWP %>% filter(Year >= 2010) %>% mutate(unhappy = pre2010avg < 5)
 
 GWP10s.mod1 <- lm(ls ~ unhappy*time, GWP10s)
-GWP10s.mod2 <- lm(log(ls) ~ unhappy*time, GWP10s)
-exp(coef(GWP10s.mod2))
-exp(coef(GWP10s.mod2)[3]+coef(GWP10s.mod2)[4])
+summary(GWP10s.mod1)
+# GWP10s.mod2 <- lm(log(ls) ~ unhappy*time, GWP10s)
+# exp(coef(GWP10s.mod2))
+# exp(coef(GWP10s.mod2)[3]+coef(GWP10s.mod2)[4])
 
 ######################################
 # Calculating the effect on natives  #

@@ -24,6 +24,41 @@ sum(d.gap$N) # number of observations
 GAP <- weighted.mean(x = d.gap$gap, w = d.gap$N); GAP*100
 range(d.gap$gap)*100
 
+##############################
+# gap for individual sources #
+##############################
+
+# For Hendriks et al., (2018)
+d.gap.hendriks <- d.gap %>% filter(Citation == "Hendriks et al., (2018)")
+weighted.mean(x = d.gap.hendriks$gap, w = d.gap.hendriks$N)*100
+sum(d.gap.hendriks$N)
+nrow(d.gap.hendriks)
+
+# For Helliwell et al. 2018
+d.gap.helliwell <- d.gap %>% filter(Citation == "Helliwell et al. 2018")
+weighted.mean(x = d.gap.helliwell$gap, w = d.gap.helliwell$N)*100
+sum(d.gap.helliwell$N)
+nrow(d.gap.helliwell)
+
+# For Lönnqvist et al., (2015)
+d.gap.lonnqvist <- d.gap %>% filter(Citation == "Lonnqvist et al., (2015)")
+weighted.mean(x = d.gap.lonnqvist$gap, w = d.gap.lonnqvist$N)*100
+sum(d.gap.lonnqvist$N)
+nrow(d.gap.lonnqvist)
+
+# For PINZMS
+d.gap.PINZMS <- d.gap %>% filter(str_detect(Citation, "PINZMS"))
+weighted.mean(x = d.gap.PINZMS$gap, w = d.gap.PINZMS$N)*100
+sum(d.gap.PINZMS$N)
+nrow(d.gap.PINZMS)
+
+# For Baltatescu 2007
+d.gap.baltatescu <- d.gap %>% filter(Citation == "Baltatescu 2007")
+weighted.mean(x = d.gap.baltatescu$gap, w = d.gap.baltatescu$N)*100
+sum(d.gap.baltatescu$N)
+nrow(d.gap.baltatescu)
+
+
 ######################################################
 # Calculating how LS in countries changes over time  #
 ######################################################
